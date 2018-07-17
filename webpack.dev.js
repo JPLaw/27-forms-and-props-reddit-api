@@ -1,8 +1,8 @@
 'use strict';
 
 const { HotModuleReplacementPlugin } = require('webpack');
-const merge = rewuire('webpack-merge');
-const commonConfig = require('./webpack.commom');
+const merge = require('webpack-merge');
+const commonConfig = require('./webpack.common');
 
 const webpackDevConfig = {};
 
