@@ -1,14 +1,15 @@
 import React from 'react';
 import { render as renderDom } from 'react-dom';
-// import App from './components/app/app';
+import App from './components/app/app';
 
 
 class Main extends React.Component {
   render() {
     return (
+      // React.Fragment is how we can wrap JSX elements without riddling the DOM with unnecesary divs
       <React.Fragment>
-        {/* <App /> */}
-        <h1>Is this working?</h1>
+        <h1>React Reddit</h1>
+        <App />
       </React.Fragment>
     );
   }
