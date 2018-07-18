@@ -29,7 +29,7 @@ export default class App extends React.Component {
 
   // demo equiv to pokemonSearch
   redditSearch = (search) => {
-    const url = `${redditApi}/${search}`;
+    const url = `${redditApi}/${search}.json?limit=${10}`;
     return this.load(url)
       .then((subreddits) => {
         this.setState({ subreddits });
@@ -42,7 +42,8 @@ export default class App extends React.Component {
       <main className="container">
       <RedditList
       searchMethod={this.redditSearch}
-      subreddits={this.state.subreddits}/>
+      subreddits={this.state.subreddits}
+      max={this.state.max}/>
       </main>
     );
   }

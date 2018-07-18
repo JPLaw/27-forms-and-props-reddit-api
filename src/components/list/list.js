@@ -7,7 +7,8 @@ export default class RedditList extends React.Component {
     super(props);
     this.state = {
       search: '',
-      max: 5,
+      subreddits: [],
+      max: 10,
     };
   }
 
@@ -31,15 +32,31 @@ export default class RedditList extends React.Component {
       <div className="subreddit-list">
         <label>Search For a Subreddit</label>
         <form onSubmit={ this.handleSubmit }>
+          <input 
+          value={ this.state.search }
+          onChange={ this.handleSearch }
+          placeholder="Search..."
+          />
+          <label>Number of Subs:</label>
           <input
-          /><br />
-          <label>Number of Subs: {this.state.max}</label>
-          <input/>
+          type="number"
+          value={this.state.max}
+          onChange={this.handleInputChange}
+          />
           <button type="submit">Search</button>
         </form>
         <ul>
           {
-            
+            this.props.subreddits.map((item, index) => {
+              return (
+                <div key={index}
+                className="subreddit-detail">
+                <a href={item.data.url}>
+                <h2>{item.data.title}</h2>
+                </a>
+                </div>
+              );
+            })
           }
         </ul>
       </div>
@@ -50,4 +67,5 @@ export default class RedditList extends React.Component {
 RedditList.propTypes = {
   searchMethod: PropTypes.func,
   subreddits: PropTypes.array,
+  max: PropTypes.array,
 };
