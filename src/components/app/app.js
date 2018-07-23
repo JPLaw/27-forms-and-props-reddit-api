@@ -4,14 +4,14 @@ import { fetchData } from '../../lib/utils';
 
 import './app.scss';
 
-const redditApi = 'http://www/reddit.com/r';
+const redditApi = 'http://www.reddit.com/r';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       subreddits: [],
-      loading: true,
+      loading: false,
     };
   }
 
@@ -28,8 +28,8 @@ export default class App extends React.Component {
   // componentDidMount? review what this does again
 
   // demo equiv to pokemonSearch
-  redditSearch = (search) => {
-    const url = `${redditApi}/${search}`;
+  redditSearch = (search, limit) => {
+    const url = `${redditApi}/${search}.json?limit=${limit}`;
     return this.load(url)
       .then((subreddits) => {
         this.setState({ subreddits });
