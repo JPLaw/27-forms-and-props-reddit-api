@@ -24,9 +24,9 @@ export const fetchData = (url) => {
     .catch(() => {
       return superagent.get(url)
         .then((result) => {
-          console.log(result.body, 'RESULT.BODY');
-          setCache(url, result.body);
-          return result.body;
+          console.log(result.body.data.children, 'RESULT.BODY!!!!');
+          setCache(url, result.body.data.children);
+          return result.body.data.children;
         })
         .catch(console.error);
     })

@@ -7,14 +7,14 @@ export default class RedditList extends React.Component {
     super(props);
     this.state = {
       search: '',
-      subreddits: [],
-      max: 10,
+      // subreddits: [],
+      limit: 10,
     };
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.searchMethod(this.state.search, this.state.max);
+    this.props.searchMethod(this.state.search, this.state.limit);
   }
 
   handleSearch = (event) => {
@@ -40,7 +40,10 @@ export default class RedditList extends React.Component {
           <label>Number of Subs:</label>
           <input
           type="number"
-          value={this.state.max}
+          min="1" 
+          max="100"
+          ref={this.state.limit}
+          value={this.state.limit}
           onChange={this.handleInputChange}
           />
           <button type="submit">Search</button>
@@ -67,5 +70,4 @@ export default class RedditList extends React.Component {
 RedditList.propTypes = {
   searchMethod: PropTypes.func,
   subreddits: PropTypes.array,
-  max: PropTypes.array,
 };
